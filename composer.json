@@ -1,0 +1,20 @@
+{
+    "name": "myvendor/actaskman",
+    "description": "Simple AC Task Manager for Astek rectrutation process.",
+    "type": "project",
+    "license": "GIT/MIT",
+    "autoload": {
+        "psr-4": {
+            "Myvendor\\Actaskman\\": "src/app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Michał Furman",
+            "email": "64414824+MichalFurman@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "bramus/router": "^1.5"
+    }
+}

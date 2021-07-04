@@ -1,0 +1,267 @@
+:root {
+  --green:rgb(6, 130, 20);
+  --white: #ffffff;
+  --font-arial: Arial, Helvetica, sans-serif;
+  --font-times: Times, "Times New Roman";
+}
+
+*, *:after, *:before { 
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+* {
+  font-family: var(--font-times);
+ }
+
+.App {
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  background-color: var(--green);
+  padding: 30px;
+  overflow: hidden;
+}
+
+.item {
+  padding-left: 1.5rem;
+}
+
+.itemList {
+  text-align: left;
+}
+
+.task-link {
+  font-weight:normal;
+  font-size: 2rem;
+}
+
+.task-link:hover {
+  width: 100%;
+  background-color: rgba(96, 96, 96, 0.047);
+  cursor: pointer;
+  text-decoration: underline;
+  display:block;
+}
+
+.author {
+  margin-top: -1.6rem;
+}
+
+.container {
+  width: 100%;
+  height: auto;
+  padding: 0.8rem;
+  border-radius: 1rem;
+  background-color: var(--white);
+}
+
+.listContainer {
+  /* margin: 0 auto; */
+  width: calc(100vw - 80px);
+  height: 80vh;
+  overflow-y: scroll;
+}
+
+.container .add-div {
+  border-top: 0.3rem solid var(--green);
+  width: 100%;
+  margin-top: 0.8rem;
+  padding: 1rem;
+}
+
+.modal-overlay {
+  display: none; 
+  position: fixed; 
+  z-index: 100; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%;
+  background-color: rgba(0,0,0,0.4); 
+  overflow: hidden;
+}
+
+.modal {
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  width: 40rem;
+  height: 24rem;
+  transform: translate(-50%, -50%);
+  background-color: var(--white);
+  border: 3px solid var(--green);
+  border-radius: 1rem;
+  z-index: 10001;
+  align-content: center;
+  align-items: left;   
+}
+
+.modal-header {
+  display: inline-block;
+  background-color: var(--green);
+  width: 40rem;
+  border-top-left-radius: 0.8rem;
+  border-top-right-radius: 0.8rem;
+}
+
+.close{
+  float: right;
+  padding-right: 15px;
+  background-color: var(--green);
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  border-top-right-radius: 1rem;
+}
+
+.modal-body {
+  padding-top: 1.5rem;
+  height: 16rem;
+}
+
+.modal-row {
+  display: block;
+}
+
+.modal-row div {
+  vertical-align: top;
+  padding-top: 1rem;
+  display: inline-block;
+  font-size: 1.5rem;
+}
+
+.modal-title {
+  display: block;
+  width: 12rem;
+  text-align: right;
+  padding-right: 0.5rem;
+
+}
+
+.form-control {
+  width: 18rem;
+  border: 3px solid var(--green);
+  border-radius: 1rem;
+  font-size: 1.4rem;
+  font-family: var(--font-arial);
+}
+
+.modal-footer{
+  width: 36rem;
+  display: inline-block;
+}
+
+.modal-footer > button {
+  float: right;
+}
+
+
+.show-overlay {
+  display: none; 
+  position: fixed; 
+  z-index: 100; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%;
+  background-color:var(--green); 
+  overflow: hidden;
+}
+
+.showtask {
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  width: 40rem;
+  height: 24rem;
+  transform: translate(-50%, -50%);
+  background-color: var(--white);
+  border: 3px solid var(--green);
+  border-radius: 1rem;
+  z-index: 10001;
+  align-content: center;
+  align-items: left;   
+}
+
+
+.show-header {
+  display: inline-block;
+  background-color: var(--green);
+  width: 40rem;
+  border-top-left-radius: 0.8rem;
+  border-top-right-radius: 0.8rem;
+}
+
+.close{
+  float: right;
+  padding-right: 15px;
+  background-color: var(--green);
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  border-top-right-radius: 1rem;
+}
+
+.show-body {
+  text-align: left;
+  padding-top: 0rem;
+  padding-left: 1.5rem;
+  height: 16rem;
+}
+
+.show-task {
+  font-weight:normal;
+  font-size: 2rem;
+}
+
+.desc {
+  font-weight:normal;
+  font-size: 1.2rem;
+}
+
+.show-close{
+  float: right;
+  padding-right: 15px;
+  background-color: var(--green);
+  color: white;
+  font-size: 3rem;
+  cursor: pointer;
+  border-top-right-radius: 1rem;
+}
+
+button {
+  background-color: var(--green);
+  border-radius: 1rem;
+  border: 0;
+  color: var(--white);
+  font-family: var(--font-arial);
+  font-size: 1.7rem;
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.add-button {
+  display: block;
+  /* align-items: right; */
+}
+
+.list-status {
+  width: 100%;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: var(--green);
+}
