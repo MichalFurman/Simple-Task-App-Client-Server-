@@ -6,7 +6,7 @@ Task Client - Server App on ReactJS and PHP with REST API
 ### Package includes:
 #### In root directory:
 - "actaskdb.sql" - SQL file - MySQL/MariaDb,
-- root directory - Server Side App - PHP,
+- "ROOT" directory - Server Side App - PHP,
 - "Client" directory - Client Side App - React JS,
 
 ### Required environment:
