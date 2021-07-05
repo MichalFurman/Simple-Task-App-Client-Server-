@@ -157,7 +157,7 @@
 			return $this;
 		}
 
-		public function read(string $table, string $select, $where=null, $order=null, $limit=null) :object
+		public function read(string $table, $select, $where=null, $order=null, $limit=null) :object
 		{
 			$this->reset();
 			$this->dbaccess->lock_tables($table, 'WRITE');
@@ -166,7 +166,7 @@
 			return $this;
 		}
 
-		public function read_upd(string $table, string $select, $where=null, $order=null, $limit=null, $lock='FOR UPDATE') :object
+		public function read_upd(string $table, $select, $where=null, $order=null, $limit=null, $lock='FOR UPDATE') :object
 		{
 			$this->reset();
 			$this->dbaccess->lock_tables($table, 'WRITE');
@@ -175,7 +175,7 @@
 			return $this;
 		}
 
-		public function read_share(string $table, string $select, $where=null, $order=null, $limit=null, $lock='LOCK IN SHARE MODE') :object
+		public function read_share(string $table, $select, $where=null, $order=null, $limit=null, $lock='LOCK IN SHARE MODE') :object
 		{
 			$this->reset();
 			$this->dbaccess->lock_tables($table, 'WRITE');

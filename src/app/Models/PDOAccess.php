@@ -122,7 +122,7 @@
 			if (is_array($select)) {
 				
 				foreach ($select as $klucz =>$wartosc){
-					if (!$this->exist_columns($db_tab, $wartosc)) exit ('Kolumna : "'.$columns.'" nie istnieje w tablicy :'.$db_tab);
+					if (!$this->exist_columns($db_tab, array($wartosc))) exit ('Kolumna : "'.$columns.'" nie istnieje w tablicy :'.$db_tab);
 					$columns .= $wartosc.', ';				
 				}
 				$columns = substr($columns,0,-2)." ";
@@ -146,7 +146,6 @@
 			if ($lock !== null){
 				$wpissql.=' '.$lock;
 			}
-
 			try{
 				if ($commit === true || !$this->db->inTransaction()) $this->db->beginTransaction();
 				$query = $this->db->prepare($wpissql);
@@ -487,7 +486,7 @@
 			else return false;
 		}
 
-		public function exist_columns(bool $table=null, array $columns=null, array $props=null, bool $commit=true)
+		public function exist_columns(string $table=null, array $columns=null, array $props=null, bool $commit=true)
 		{
       		if (!isset($table) || !isset($columns))
         		exit ('Błędny argument dla metody: "exist_columns". Sprawdź argumenty.');
@@ -546,7 +545,7 @@
 
 		private function exist_table (string $source, bool $commit) 
 		{
-			return (in_array($source,$this->list_tables($columns=null, $filtres_yes=null, $filtres_no=null, $commit)));
+			return (in_array($source, $this->list_tables($columns=null, $filtres_yes=null, $filtres_no=null, $commit)));
 		}
 
 	}
