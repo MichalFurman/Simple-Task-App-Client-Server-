@@ -37,7 +37,7 @@
                 ['input'=>'task_desc', 'type'=>'string','size'=>256],
             );
             $result = $this->requestService->read()->validate($validationRules)->get();
-            if ($result === null) return array('data'=> $this->requestService->errors(0), 'status'=>400);
+            if ($result === null) return array('data'=> $this->requestService->errors(), 'status'=>400);
 
             $result = $this->task->store($result);
             return array('data'=>$result, 'status'=>201);
@@ -50,7 +50,7 @@
                 ['input'=>'task_desc', 'type'=>'string','size'=>256],
             );
             $result = $this->requestService->read()->validate($validationRules)->get();
-            if ($result === null) return array('data'=> $this->requestService->errors(0), 'status'=>400);
+            if ($result === null) return array('data'=> $this->requestService->errors(), 'status'=>400);
 
             $result = $this->task->update($result, $id);
             if ($result === false) return array('data'=> 'not found', 'status'=>404);

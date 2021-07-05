@@ -35,11 +35,11 @@
                     $this->data = $request;
                     return $this;
                 }
-                $this->data = array('data'=>'The data are corrupted. Bad JSON data.', 'status'=>400);
-                $this->fail = false;
+                $this->data = array('data'=>'The data is corrupted. Bad JSON data.');
+                $this->fail = true;
                 return $this;
             }
-            $this->data = array('data'=>'Bad JSON data. No data in request', 'status'=>400);
+            $this->data = array('data'=>'Bad JSON data. No data in request');
             $this->fail = true;
             return $this;
         }
@@ -49,7 +49,7 @@
             return null;
         }
 
-        public function errors($type) {
+        public function errors() {
             if ($this->fail === true) {
                 return $this->data;
             }
@@ -58,7 +58,7 @@
 
         public function validate(array $validationRules)
         {
-            if (isset($this->data['status']) && $this->data['status'] === 400) return $this;
+            if ($this->fail === true) return $this;
             
             $errors = array();
 
