@@ -58,7 +58,7 @@ class TaskList extends Component {
 
   closeTaskModal = () => {
     this.setState({
-      selectedItem: 0,
+      selectedItem: null,
       show_task_modal: false,
     })
   };

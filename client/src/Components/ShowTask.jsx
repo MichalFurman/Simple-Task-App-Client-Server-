@@ -8,38 +8,22 @@ class ShowTask extends Component {
   constructor(){
     super();
     this.state = {
-      id: null,
-      item: {
-        user_name: '',
-        task_title: '',
-        task_desc: '',
-        time:''
-      },
+      item: null
     }
   }
 
   componentWillReceiveProps(nextProps) {
+    this.setState({
+      item: null
+    })  
     if (nextProps.id){
       getItem(nextProps.id).then(item => {
         this.setState({
-          id: nextProps.id,
           item
         })  
       })
     }
   }
-
-  closeTaskModal = () => {
-    this.setState({
-      selectedItem: 0,
-      show_task_modal: false,
-    })
-  };
-
-  onChange(event) {
-    this.setState({[event.target.name]: event.target.value})
-  }
-
 
 
   render() {
@@ -52,7 +36,7 @@ class ShowTask extends Component {
             <p className="desc">{this.state.item.task_desc}</p>
           </div>
         : null }
-       </Fragment>
+      </Fragment>
     )
   }
 }
