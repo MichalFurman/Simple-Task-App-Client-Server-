@@ -51,7 +51,7 @@
         public function deleteById(int $id) :bool
         {
             if (empty($this->read($this->tasks_table,'*','id = '.$id)->get())) return false;
-            $this->delete_where($this->tasks_table,$id);
+            $this->delete_where($this->tasks_table,'id = '.$id);
             return true;
         }
     }
