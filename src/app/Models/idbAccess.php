@@ -1,4 +1,4 @@
-<?
+<?php
 	/**
 	* 	Interfejs / kontrakt klasy komunikacji z bazą danych
 	*/

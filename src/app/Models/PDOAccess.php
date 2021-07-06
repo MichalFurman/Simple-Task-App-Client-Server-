@@ -1,4 +1,4 @@
-<?
+<?php
 	/**
 	* 	Bazowa klasa dla PDO
 	*/

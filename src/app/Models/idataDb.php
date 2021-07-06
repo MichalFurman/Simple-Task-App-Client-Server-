@@ -1,4 +1,4 @@
-<?
+<?php
     namespace Myvendor\Actaskman\Models;
 
 	interface idataDb 

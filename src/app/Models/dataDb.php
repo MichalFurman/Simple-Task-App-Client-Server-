@@ -1,4 +1,4 @@
-<?
+<?php
     namespace Myvendor\Actaskman\Models;
 
 	use http\Exception\InvalidArgumentException;
