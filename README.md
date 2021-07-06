@@ -42,6 +42,8 @@ https://drive.google.com/file/d/1Ea9CODLFZ7gn4YGb-Vkf-YeMJed8v4_Q/view?usp=shari
 - unzip and start file: ```usbwebserver.exe```
 - the application will start automatically at address: http://localhost:3000
 
+Package based on USBWebServer - light LAMP Server for Windows systems.
+
 
 Enjoy.
 
