@@ -1,15 +1,4 @@
-<VirtualHost *:80>
-  ServerName actaskdb.brudka.hcore.pl
-  # You don't have to put an alias in, but it's useful
-  ServerAlias www.actaskdb.brudka.hcore.pl
-  DocumentRoot /var/www/<my-domain>/public_html/
-  ErrorLog ${APACHE_LOG_DIR}/error.log
-  CustomLog ${APACHE_LOG_DIR}/access.log combined
-  # Note that this is in a different context now - not in the virtual host, but in the actual root directory.
-  <Directory /var/www/<my-domain>/public_html/>
-    RewriteEngine On
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule . index.php [L]
-  </Directory>
-</VirtualHost>
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.php [L]
