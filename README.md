@@ -33,6 +33,15 @@ Task Client - Server App on ReactJS and PHP with REST API
 App client is at address:
 http://localhost:3000 -or other port on which node (NPM) started the service  
 
+
+### Standalone Live working demo:
+
+Just download this package:
+https://drive.google.com/file/d/1Ea9CODLFZ7gn4YGb-Vkf-YeMJed8v4_Q/view?usp=sharing
+unzip and start file: ```usbwebserver.exe```
+the application will start automatically at address: http://localhost:3000
+
+
 Enjoy.
 
 ## License :old_key:
