@@ -1,8 +1,9 @@
 import axios from 'axios'
+import {API} from "./config"
 
 export const itemsList = () => {
   return axios
-  .get(process.env.REACT_APP_API+'/', {
+  .get(API+'/', {
       headers: {'Content-Type': 'application/json'}
     })
     .then(response => {
@@ -21,7 +22,7 @@ export const itemsList = () => {
 
 export const getItem = (id) => {
   return axios
-  .get(process.env.REACT_APP_API+'/'+id, {
+  .get(API+'/'+id, {
       headers: {'Content-Type': 'application/json'}
     })
     .then(response => {
@@ -39,7 +40,7 @@ export const getItem = (id) => {
 
 export const deleteItem = (id) => {
   return axios
-  .delete(process.env.REACT_APP_API+'/'+id, {
+  .delete(API+'/'+id, {
       headers: {'Content-Type': 'application/json'}
     })
     .then(response => {
