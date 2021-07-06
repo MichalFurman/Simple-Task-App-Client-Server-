@@ -2,7 +2,13 @@
     /** definicje routingu dla REST API
      */
     
-    require __DIR__ . '../../../vendor/autoload.php';
+
+     /* autoload.php */
+    if (file_exists(__DIR__ . '../../../vendor/autoload.php')) require __DIR__ . '../../../vendor/autoload.php';
+    else if (file_exists(__DIR__ . '/../../../vendor/autoload.php')) require __DIR__ . '/../../../vendor/autoload.php';
+    else if (file_exists('../../../vendor/autoload.php')) require '../../../vendor/autoload.php';
+    else exit ('Can not load file "autoload.php" in: "src/app/routes.php", plase check path and file.');
+
     require 'cors_policy.php';
     header('Content-Type: application/json');
 
