@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react';
 import axios from 'axios'
 import ShowTask from './ShowTask'
 import { itemsList } from '../Utils/Functions'
+import {API} from "../Utils/config"
 
 
 class TaskList extends Component {
@@ -87,13 +88,16 @@ class TaskList extends Component {
   }
 
   submit(){
-    let url = process.env.REACT_APP_API+"/";
+    let url = API+"/";
     axios.post(url, this.state.newItem, { 
       headers: {'Content-Type': 'application/json'}
     })
     .then(response => {
       if (response.status === 201) {
-        this.setState({itemList:[response.data, ...this.state.itemList]})
+        this.setState({
+          itemList:[response.data, ...this.state.itemList],
+          itemListStatus: ''
+        })
       }})
     .catch((errors) => {
       if (errors) console.log(errors)
