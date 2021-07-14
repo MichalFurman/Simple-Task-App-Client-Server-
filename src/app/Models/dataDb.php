@@ -14,7 +14,7 @@
 
 		function __construct(object $dbaccess, $commit=true, $log_rec=true) 
 		{
-      	if (!isset($dbaccess)) throw new InvalidArgumentException('Missing idatabase class - please check arguments of dependency injection.');
+      			if (!isset($dbaccess)) throw new InvalidArgumentException('Missing idatabase class - please check arguments of dependency injection.');
 			$this->dbaccess = $dbaccess;
 			$this->commit = $commit;
 			$this->log_rec = $log_rec;
@@ -227,17 +227,17 @@
 
 		public function __set($name, $value) 
 		{
-            if (!$this->data[1] && array_key_exists($name, $this->data)) {
-                $this->data[$name] = $value;
-            }
-        }
+            		if (!$this->data[1] && array_key_exists($name, $this->data)) {
+                		$this->data[$name] = $value;
+            		}
+        	}
 
 		public function __get($name) 
 		{
-            if (!$this->data[1] && array_key_exists($name, $this->data)) {
-                return $this->data[$name];
-            }
-        }
+            		if (!$this->data[1] && array_key_exists($name, $this->data)) {
+                		return $this->data[$name];
+            		}
+        	}
 	}
 
 ?>
