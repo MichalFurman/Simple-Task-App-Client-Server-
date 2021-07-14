@@ -1,8 +1,8 @@
 import React, {Component, Fragment} from 'react';
-import axios from 'axios'
-import ShowTask from './ShowTask'
-import { itemsList } from '../Utils/Functions'
-import {API} from "../Utils/config"
+import axios from 'axios';
+import ShowTask from './ShowTask';
+import { itemsList } from '../Utils/Functions';
+import {API} from "../Utils/config";
 
 
 class TaskList extends Component {
@@ -28,7 +28,7 @@ class TaskList extends Component {
   }
 
   componentDidMount(){
-    this.getItems()
+    this.getItems();
   }
 
   showNewTaskModal = () => {
@@ -40,13 +40,13 @@ class TaskList extends Component {
         task_title: '',
         task_desc: ''
       },
-    })
+    });
   };
 
   closeNewTaskModal = () => {
     this.setState({
       new_task_modal: false,
-    })
+    });
   };
 
   showTaskModal = (id) => {
@@ -54,21 +54,21 @@ class TaskList extends Component {
       selectedItem: id,
       new_task_modal: false,
       show_task_modal: true,
-    })
+    });
   };
 
   closeTaskModal = () => {
     this.setState({
       selectedItem: null,
       show_task_modal: false,
-    })
+    });
   };
 
   getItems = () => {
     this.setState({
       itemList: [],
       itemListStatus: this.messages.loading_list
-    })
+    });
     itemsList().then(data =>{
       if (Array.isArray(data) && data.length > 0)        
       this.setState({
@@ -79,12 +79,12 @@ class TaskList extends Component {
       this.setState({
         itemList: [],
         itemListStatus: this.messages.no_items
-      })
-    })
+      });
+    });
   }
 
   onChange(event) {
-    this.setState({[event.target.name]: event.target.value})
+    this.setState({[event.target.name]: event.target.value});
   }
 
   submit(){
@@ -100,9 +100,9 @@ class TaskList extends Component {
         })
       }})
     .catch((errors) => {
-      if (errors) console.log(errors)
-      alert('Submit data failed. Perhaps server is down.')
-      this.getItems()
+      if (errors) console.log(errors);
+      alert('Submit data failed. Perhaps server is down.');
+      this.getItems();
     })
     this.setState({
       newItem: {
