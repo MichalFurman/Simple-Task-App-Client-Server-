@@ -4,7 +4,7 @@
     
 
      /* autoload.php */
-    require '../../../vendor/autoload.php';
+    require '../../vendor/autoload.php';
 
     require 'cors_policy.php';
     header('Content-Type: application/json');
