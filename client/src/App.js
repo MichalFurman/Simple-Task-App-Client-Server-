@@ -1,7 +1,7 @@
 import './App.css';
-import React, {Component} from 'react'
+import React, {Component} from 'react';
 
-import TaskList from './Components/TaskList'
+import TaskList from './Components/TaskList';
 
 class App extends Component {
   render() {
