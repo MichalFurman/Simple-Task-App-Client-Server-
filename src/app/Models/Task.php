@@ -11,7 +11,8 @@
         private $tasks_view = 'tasks_view';
         private $commit;
 
-        public function __construct($commit=true) {       
+        public function __construct($commit=true) 
+        {       
             $this->commit = $commit;  
             parent::__construct(PDOAccess::get(), $commit, false);
         }
