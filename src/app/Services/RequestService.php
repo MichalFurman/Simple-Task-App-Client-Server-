@@ -44,12 +44,14 @@
             return $this;
         }
 
-        public function get() {
+        public function get() 
+        {
             if ($this->fail === false) return $this->data;
             return null;
         }
 
-        public function errors() {
+        public function errors() 
+        {
             if ($this->fail === true) {
                 return $this->data;
             }
