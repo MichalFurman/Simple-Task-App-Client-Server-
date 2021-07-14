@@ -5,7 +5,7 @@ import { getItem } from '../Utils/Functions';
 
 class ShowTask extends Component {
 
-  constructor(){
+  constructor() {
     super();
     this.state = {
       item: null
