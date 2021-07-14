@@ -15,8 +15,7 @@ export const itemsList = () => {
       if (errors) console.log(errors);
       alert('We have some troubles. Perhaps server is down.');
       return null;
-    })
-
+    });
 }
 
 export const getItem = (id) => {
@@ -33,7 +32,7 @@ export const getItem = (id) => {
       if (errors) console.log(errors);
       alert('We have some troubles. Perhaps server is down.');
       return null;
-    })
+    });
 }
 
 export const deleteItem = (id) => {
@@ -50,5 +49,5 @@ export const deleteItem = (id) => {
       if (errors) console.log(errors);
       alert('We have some troubles. Perhaps server is down.');
       return null;
-    })
+    });
 }
