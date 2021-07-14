@@ -1,6 +1,9 @@
 <?php
 	/**
-	* 	Bazowa klasa dla PDO
+	* 	Bazowa klasa dla PDO,
+	*       Jest to klasa dodana do projektu z własnego repozytorium.
+	*       Klasa generuje jedyną instancję, singletone połączenia z bazą danych.
+	*       W każdym momencie w aplikacji możemy mieć do niej dostęp przez statyczną metodę: get()
 	*/
 
     namespace Myvendor\Actaskman\Models;
@@ -10,10 +13,10 @@
 	class PDOAccess
 	{
 
-		protected $db;
+	protected $db;
 
-        public static function get ($config=null) {
-          
+        public static function get ($config=null) 
+	{ 
             static $inst = null;
             if ($inst === null) {
                 $inst = new PDOAccess($config);
@@ -21,14 +24,14 @@
             return $inst;
         }
 
+	
+	    function __construct($config = null) 
+	    {
 
-		function __construct($config = null) 
-		{
-
-			if ($config === null) {
-                global $global_conf;
-                isset($global_conf) && is_array($global_conf) ? $config = $global_conf : null;
-            }
+	        if ($config === null) {
+                    global $global_conf;
+                    isset($global_conf) && is_array($global_conf) ? $config = $global_conf : null;
+                }
 
 			if (!isset($config) || !is_array($config)) exit ('Error - no config for connection.');
 			if (!isset($config['DB_HOST'])) exit ('Error - no host name in config.');
@@ -45,7 +48,7 @@
 				);
 			}
 			catch (\PDOException $e) {
-				exit('Nie udało się nawiązać połączenia z bazą danych.<br>Wstrzymaj pracę i przekaż informację administratorowi.<br>Nr błędu: '.$e->getMessage());
+				exit('No connection with database.<br>Send information to administrator.<br>Nr błędu: '.$e->getMessage());
 			}
 			
 			$this->db->exec("set names utf8");
@@ -77,7 +80,7 @@
 			}
 			catch(\Exception $e){
 		  		$this->db->rollBack();
-		  		exit('Wystąpił błąd zapisu log_rec do '.$log_table.': <br>' . $e->getMessage().'<br>Wystąpił w linii: '.$e->getLine().'<br>W Ciągu SQL: '.$stamp);
+		  		exit('We have errors in the method LOG_REC: '.$log_table.': <br>' . $e->getMessage().'<br>Check error in line: '.$e->getLine().'<br>in SQL string: '.$stamp);
 		  	}		
 		}
 
@@ -117,18 +120,18 @@
 		
 		public function select (string $db_tab, $select='*', string $where=null , string $order=null, int $limit=null, bool $commit=true, string $lock=null) :array
 		{
-			if (!$this->exist_table($db_tab, $commit)) exit ('Nie ma takiej tabeli: '.$db_tab);
+			if (!$this->exist_table($db_tab, $commit)) exit ('There is no that table in database: '.$db_tab);
 			$columns = "";
 			if (is_array($select)) {
 				
 				foreach ($select as $klucz =>$wartosc){
-					if (!$this->exist_columns($db_tab, array($wartosc))) exit ('Kolumna : "'.$columns.'" nie istnieje w tablicy :'.$db_tab);
+					if (!$this->exist_columns($db_tab, array($wartosc))) exit ('Column: "'.$wartosc.'" not exists in this table:'.$db_tab);
 					$columns .= $wartosc.', ';				
 				}
 				$columns = substr($columns,0,-2)." ";
 			}
 			else {
-				if ($select != '*' && !$this->exist_columns($db_tab, array($select))) exit ('Kolumna : "'.$select.'" nie istnieje w tablicy :'.$db_tab);
+				if ($select != '*' && !$this->exist_columns($db_tab, array($select))) exit ('Column: "'.$select.'" not exists in this table:'.$db_tab);
 				$columns = $select;
 			}
 
@@ -155,7 +158,7 @@
 			}
 			catch(\Exception $e){
 				if ($this->db->inTransaction()) $this->db->rollBack();
-		  		exit('Wystąpił błąd wykonania SELECT w '.$db_tab.': <br>' . $e->getMessage().'<br>Wystąpił w linii: '.$e->getLine().'<br>W Ciągu SQL: '.$wpissql);
+		  		exit('We have errors in the method SELECT in '.$db_tab.': <br>' . $e->getMessage().'<br>Check error in line: '.$e->getLine().'<br>in SQL string: '.$wpissql);
 		  	}
 		  	$result = $query->fetchAll(\PDO::FETCH_ASSOC);
 		  	return $result;
@@ -163,7 +166,7 @@
 		
 		public function insert (string $db_tab, array $wpis, bool $parse=true, bool $commit=true, bool $log_rec=true) :int
 		{
-			if (!$this->exist_table($db_tab, $commit)) exit ('Nie ma takiej tabeli: '.$db_tab);
+			if (!$this->exist_table($db_tab, $commit)) exit ('There is no that table in database: '.$db_tab);
 			$wartosci = array();
 			$wpissql = 'INSERT INTO '.$db_tab.' (';
 			foreach ($wpis as $klucz =>$wartosc){
@@ -198,13 +201,13 @@
 			catch (\Exception $e) {
 				if ($this->db->inTransaction()) $this->db->rollBack();
 			  	$this->db->exec('UNLOCK TABLES');
-		  		exit('Wystąpił błąd wykonania INSERT w '.$db_tab.': <br>' . $e->getMessage().'<br>Wystąpił w linii: '.$e->getLine().'<br>W Ciągu SQL: '.$wpissql);
+		  		exit('Wystąpił błąd wykonania INSERT in '.$db_tab.': <br>' . $e->getMessage().'<br>Check error in line: '.$e->getLine().'<br>in SQL string: '.$wpissql);
 		  	}
 		}
 
 		public function update (string $db_tab, array $wpis, int $id, bool $parse=true, bool $commit=true, bool $log_rec=true) :void
 		{
-			if (!$this->exist_table($db_tab, $commit)) exit ('Nie ma takiej tabeli: '.$db_tab);
+			if (!$this->exist_table($db_tab, $commit)) exit ('There is no that table in database: '.$db_tab);
 			$wartosci = array();
 			$wpissql = 'UPDATE '.$db_tab.' SET ';
 			$logsql = $wpissql;
@@ -232,13 +235,13 @@
 			catch(\Exception $e){
 				if ($this->db->inTransaction()) $this->db->rollBack();
 				$this->db->exec('UNLOCK TABLES');
-		  		exit('Wystąpił błąd wykonania UPDATE w '.$db_tab.': <br>' . $e->getMessage().'<br>Wystąpił w linii: '.$e->getLine().'<br>W Ciągu SQL: '.$wpissql);
+		  		exit('We have errors in the method UPDATE in '.$db_tab.': <br>' . $e->getMessage().'<br>Check error in line: '.$e->getLine().'<br>in SQL string: '.$wpissql);
 		  	}
 		}
 
 		public function update_where (string $db_tab, array $wpis, string $where, bool $parse=true, bool $commit=true, bool $log_rec=true) :void
 		{
-			if (!$this->exist_table($db_tab, $commit)) exit ('Nie ma takiej tabeli: '.$db_tab);
+			if (!$this->exist_table($db_tab, $commit)) exit ('There is no that table in database: '.$db_tab);
 			$wartosci = array();
 			$wpissql = 'UPDATE '.$db_tab.' SET ';
 			$logsql = $wpissql;
@@ -266,13 +269,13 @@
 			catch(\Exception $e){
 				if ($this->db->inTransaction()) $this->db->rollBack();
 			    $this->db->exec('UNLOCK TABLES');
-			  	exit('Wystąpił błąd wykonania UPDATE w '.$db_tab.': <br>' . $e->getMessage().'<br>Wystąpił w linii: '.$e->getLine().'<br>W Ciągu SQL: '.$wpissql);
+			  	exit('We have errors in the method UPDATE_WHERE in '.$db_tab.': <br>' . $e->getMessage().'<br>Check error in line: '.$e->getLine().'<br>in SQL string: '.$wpissql);
 		  	}
 		}
 
 		public function delete_where(string $db_tab, string $where, bool $commit=true, bool $log_rec=true) :void
 		{
-			if (!$this->exist_table($db_tab, $commit)) exit ('Nie ma takiej tabeli: '.$db_tab);
+			if (!$this->exist_table($db_tab, $commit)) exit ('There is no that table in database: '.$db_tab);
 			$wpissql = 'DELETE FROM '.$db_tab.' WHERE '.$where;
 
 			try{
@@ -286,14 +289,14 @@
 			catch(\Exception $e){
 				if ($this->db->inTransaction()) $this->db->rollBack();
 				$this->db->exec('UNLOCK TABLES');
-		 	 	exit('Wystąpił błąd wykonania DELETE w '.$db_tab.': <br>' . $e->getMessage().'<br>Wystąpił w linii: '.$e->getLine().'<br>W Ciągu SQL: '.$wpissql);
+		 	 	exit('We have errors in the method DELETE_WHERE in '.$db_tab.': <br>' . $e->getMessage().'<br>Check error in line: '.$e->getLine().'<br>in SQL string: '.$wpissql);
 		  	}
 		}
 
 		public function exist(string $db_tab, array $wpis=null, string $where=null, bool $commit=true) :bool
 		{
 			if (!isset($db_tab) || ($wpis === null && $where === null)) 
-				exit ('Błędny argument dla metody: "exist". Sprawdź argumenty.');
+				exit ('Bad method parameter: "exist". Check parametres.');
 
 			$wartosci = array();
 			$wpissql = 'SELECT * FROM '.$this->parse_in($db_tab).' WHERE ';
@@ -323,14 +326,14 @@
 			catch(\Exception $e){
 				if ($this->db->inTransaction()) $this->db->rollBack();
 				$this->db->exec('UNLOCK TABLES');
-				exit('Wystąpił błąd wykonania EXIST w '.$db_tab.': <br>' . $e->getMessage().'<br>Wystąpił w linii: '.$e->getLine());
+				exit('We have errors in the method EXIST in '.$db_tab.': <br>' . $e->getMessage().'<br>Check error in line: '.$e->getLine());
 			}	
 		}
 		
 		public function count(string $db_tab, array $wpis=null, string $where=null, bool $commit=true) 
 		{
 			if (!isset($db_tab) || ($wpis === null && $where === null)) 
-				exit ('Błędny argument dla metody: "count". Sprawdź argumenty.');
+				exit ('Bad method parameter: "count". Check parametres.');
 
 			$wartosci = array();
 			$wpissql = 'SELECT * FROM '.$db_tab.' WHERE ';
@@ -359,7 +362,7 @@
 			catch(\Exception $e){
 				if ($this->db->inTransaction()) $this->db->rollBack();
 				$this->db->exec('UNLOCK TABLES');
-				exit('Wystąpił błąd wykonania COUNT w '.$db_tab.': <br>' . $e->getMessage().'<br>Wystąpił w linii: '.$e->getLine());
+				exit('We have errors in the method COUNT in '.$db_tab.': <br>' . $e->getMessage().'<br>Check error in line: '.$e->getLine());
 			}	
 		}		
 
@@ -382,7 +385,7 @@
 			$array = array();
 			foreach ($input as $value) {
 				if ( !array_key_exists($columnKey, $value)) {
-					trigger_error("Key \"$columnKey\" nie istnieje w tablicy");
+					trigger_error("Key \"$columnKey\" not exists in table");
 					return false;
 				}
 				if (is_null($indexKey)) {
@@ -390,11 +393,11 @@
 				}
 				else {
 					if ( !array_key_exists($indexKey, $value)) {
-						trigger_error("Key \"$indexKey\" nie istnieje w tablicy");
+						trigger_error("Key \"$indexKey\" not exists in table");
 						return false;
 					}
 					if ( ! is_scalar($value[$indexKey])) {
-						trigger_error("Key \"$indexKey\" nie posiada skalarnej wartości");
+						trigger_error("Key \"$indexKey\" not exists in table");
 						return false;
 					}
 					$array[$value[$indexKey]] = $value[$columnKey];
@@ -405,7 +408,7 @@
 
 		public function list_tables(array $columns=null, array $filtres_yes=null, array $filtres_no=null, bool $commit=true) :array
 		{
-	    $sql = 'show full tables';
+	                $sql = 'show full tables';
 			if ($columns != null && is_array($columns)) {
 				$col_names = '';
 				foreach ($columns as $key) {
@@ -431,7 +434,7 @@
 			catch(\Exception $e){
 				if ($this->db->inTransaction()) $this->db->rollBack();
 				$this->db->exec('UNLOCK TABLES');
-				exit('Wystąpił błąd wykonania LIST_TABLES w : <br>' . $e->getMessage().'<br>Wystąpił w linii: '.$e->getLine());
+				exit('We have errors in the method LIST_TABLES in : <br>' . $e->getMessage().'<br>Check error in line: '.$e->getLine());
 			}	
 			
 			if ($filtres_yes !== null && is_array($filtres_yes)) {
@@ -463,8 +466,8 @@
 
 		public function list_columns(string $table=null, array $props=null, bool $commit=true) 
 		{
-      		if (!isset($table))
-        		exit ('Błędny argument dla metody: "list_columns". Sprawdź argumenty.');
+      		    if (!isset($table))
+        		exit ('Bad method parameter: "list_columns". Check parametres.');
 
 			$sql = 'SHOW COLUMNS FROM '.$table;
 			if ($commit === true || !$this->db->inTransaction()) $this->db->beginTransaction();
@@ -489,7 +492,7 @@
 		public function exist_columns(string $table=null, array $columns=null, array $props=null, bool $commit=true)
 		{
       		if (!isset($table) || !isset($columns))
-        		exit ('Błędny argument dla metody: "exist_columns". Sprawdź argumenty.');
+        		exit ('Bad method parameter: "exist_columns". Check parametres.');
 		
 			if (is_array($columns)) {
 				$col_names = '';
