@@ -5,12 +5,12 @@
     */
     
     /* autoload.php */
-    require '../../../vendor/autoload.php';
+    require '../../vendor/autoload.php';
 
     /* autostart.php */
-    require '../../../src/app/autostart.php';
+    require '../../src/app/autostart.php';
 
     /* routes.php */
-    require '../../../src/app/routes.php';
+    require '../../src/app/routes.php';
 
 ?>
