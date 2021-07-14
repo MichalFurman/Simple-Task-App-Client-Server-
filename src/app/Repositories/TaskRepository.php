@@ -11,7 +11,8 @@
         private $task;
         private $user;
         
-        public function __construct() {
+        public function __construct() 
+        {
             $this->task = new Task();
         }
         
