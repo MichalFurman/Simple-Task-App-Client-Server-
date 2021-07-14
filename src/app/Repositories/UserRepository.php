@@ -9,7 +9,8 @@
     {
         private $user;
 
-        public function __construct() {
+        public function __construct() 
+        {
             $this->user = new User();
         }
 
