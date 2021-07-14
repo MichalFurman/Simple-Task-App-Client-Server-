@@ -31,3 +31,5 @@
 		public function exist_columns($table=null, $columns=null, $props=null, $commit=true);
 
 	}
+
+?>
