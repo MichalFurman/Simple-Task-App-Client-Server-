@@ -1,6 +1,6 @@
 :root {
-  --green:rgb(6, 130, 20);
-  --white: #ffffff;
+  --bg_color:rgb(6, 130, 20);
+  --body_color: #ffffff;
   --font-arial: Arial, Helvetica, sans-serif;
   --font-times: Times, "Times New Roman";
 }
@@ -19,7 +19,7 @@
   width: 100%;
   height: 100vh;
   text-align: center;
-  background-color: var(--green);
+  background-color: var(--bg_color);
   padding: 30px;
   overflow: hidden;
 }
@@ -54,7 +54,7 @@
   height: auto;
   padding: 0.8rem;
   border-radius: 1rem;
-  background-color: var(--white);
+  background-color: var(--body_color);
 }
 
 .listContainer {
@@ -65,7 +65,7 @@
 }
 
 .container .add-div {
-  border-top: 0.3rem solid var(--green);
+  border-top: 0.3rem solid var(--bg_color);
   width: 100%;
   margin-top: 0.8rem;
   padding: 1rem;
@@ -90,8 +90,8 @@
   width: 40rem;
   height: 24rem;
   transform: translate(-50%, -50%);
-  background-color: var(--white);
-  border: 3px solid var(--green);
+  background-color: var(--body_color);
+  border: 3px solid var(--bg_color);
   border-radius: 1rem;
   z-index: 10001;
   align-content: center;
@@ -100,7 +100,7 @@
 
 .modal-header {
   display: inline-block;
-  background-color: var(--green);
+  background-color: var(--bg_color);
   width: 40rem;
   border-top-left-radius: 0.8rem;
   border-top-right-radius: 0.8rem;
@@ -109,8 +109,8 @@
 .close{
   float: right;
   padding-right: 15px;
-  background-color: var(--green);
-  color: white;
+  background-color: var(--bg_color);
+  color: var(--body_color);
   font-size: 2rem;
   cursor: pointer;
   border-top-right-radius: 1rem;
@@ -142,7 +142,7 @@
 
 .form-control {
   width: 18rem;
-  border: 3px solid var(--green);
+  border: 3px solid var(--bg_color);
   border-radius: 1rem;
   font-size: 1.4rem;
   font-family: var(--font-arial);
@@ -166,7 +166,7 @@
   top: 0;
   width: 100%; 
   height: 100%;
-  background-color:var(--green); 
+  background-color:var(--bg_color); 
   overflow: hidden;
 }
 
@@ -177,8 +177,8 @@
   width: 40rem;
   height: 24rem;
   transform: translate(-50%, -50%);
-  background-color: var(--white);
-  border: 3px solid var(--green);
+  background-color: var(--body_color);
+  border: 3px solid var(--bg_color);
   border-radius: 1rem;
   z-index: 10001;
   align-content: center;
@@ -188,7 +188,7 @@
 
 .show-header {
   display: inline-block;
-  background-color: var(--green);
+  background-color: var(--bg_color);
   width: 40rem;
   border-top-left-radius: 0.8rem;
   border-top-right-radius: 0.8rem;
@@ -197,8 +197,8 @@
 .close{
   float: right;
   padding-right: 15px;
-  background-color: var(--green);
-  color: white;
+  background-color: var(--bg_color);
+  color: var(--body_color);
   font-size: 2rem;
   cursor: pointer;
   border-top-right-radius: 1rem;
@@ -224,18 +224,18 @@
 .show-close{
   float: right;
   padding-right: 15px;
-  background-color: var(--green);
-  color: white;
+  background-color: var(--bg_color);
+  color: var(--body_color);
   font-size: 3rem;
   cursor: pointer;
   border-top-right-radius: 1rem;
 }
 
 button {
-  background-color: var(--green);
+  background-color: var(--bg_color);
   border-radius: 1rem;
   border: 0;
-  color: var(--white);
+  color: var(--body_color);
   font-family: var(--font-arial);
   font-size: 1.7rem;
   padding-top: 0.8rem;
@@ -263,5 +263,5 @@ button {
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 8px;
-  background: var(--green);
+  background: var(--bg_color);
 }
