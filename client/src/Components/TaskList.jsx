@@ -41,13 +41,13 @@ class TaskList extends Component {
         task_desc: ''
       },
     });
-  };
+  }
 
   closeNewTaskModal = () => {
     this.setState({
       new_task_modal: false,
     });
-  };
+  }
 
   showTaskModal = (id) => {
     this.setState({
@@ -55,14 +55,14 @@ class TaskList extends Component {
       new_task_modal: false,
       show_task_modal: true,
     });
-  };
+  }
 
   closeTaskModal = () => {
     this.setState({
       selectedItem: null,
       show_task_modal: false,
     });
-  };
+  }
 
   getItems = () => {
     this.setState({
@@ -74,7 +74,7 @@ class TaskList extends Component {
       this.setState({
         itemList: [...data],
         itemListStatus: ''
-      })
+      });
       else 
       this.setState({
         itemList: [],
@@ -103,7 +103,7 @@ class TaskList extends Component {
       if (errors) console.log(errors);
       alert('Submit data failed. Perhaps server is down.');
       this.getItems();
-    })
+    });
     this.setState({
       newItem: {
         user_name: '',
@@ -111,7 +111,7 @@ class TaskList extends Component {
         task_desc: ''
       },
       new_task_modal: false,
-    })
+    });
   }
 
   render() {
