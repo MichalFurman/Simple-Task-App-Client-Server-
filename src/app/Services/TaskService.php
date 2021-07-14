@@ -10,7 +10,8 @@
         private $task;
         private $requestService;
         
-        public function __construct() {
+        public function __construct() 
+        {
             $this->task = new TaskRepository();
             $this->requestService = new RequestService();
         }
