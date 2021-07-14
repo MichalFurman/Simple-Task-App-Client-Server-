@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import { getItem } from '../Utils/Functions'
+import { getItem } from '../Utils/Functions';
 
 
 
@@ -15,13 +15,13 @@ class ShowTask extends Component {
   componentWillReceiveProps(nextProps) {
     this.setState({
       item: null
-    })  
+    });
     if (nextProps.id){
       getItem(nextProps.id).then(item => {
         this.setState({
           item
-        })  
-      })
+        });  
+      });
     }
   }
 
