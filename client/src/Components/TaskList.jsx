@@ -7,7 +7,7 @@ import {API} from "../Utils/config";
 
 class TaskList extends Component {
 
-  constructor(){
+  constructor() {
     super();
     this.messages = {
       loading_list: ('Please wait, loading tasks...'),
@@ -27,7 +27,7 @@ class TaskList extends Component {
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.getItems();
   }
 
@@ -87,7 +87,7 @@ class TaskList extends Component {
     this.setState({[event.target.name]: event.target.value});
   }
 
-  submit(){
+  submit() {
     let url = API+"/";
     axios.post(url, this.state.newItem, { 
       headers: {'Content-Type': 'application/json'}
