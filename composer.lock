@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "822953c84b2441443180a2406b4c8782",
+    "content-hash": "6cbe4ed6a90628fa1559c7daf88979d4",
     "packages": [
         {
             "name": "bramus/router",
@@ -56,12 +56,61 @@
                 "source": "https://github.com/bramus/router/tree/1.5"
             },
             "time": "2020-10-26T09:50:48+00:00"
+        },
+        {
+            "name": "mfurman/pdomodel",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MichalFurman/PDOModel.git",
+                "reference": "7f9bbb1734b380b7fb5aae58dced0ff79c0a3afc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MichalFurman/PDOModel/zipball/7f9bbb1734b380b7fb5aae58dced0ff79c0a3afc",
+                "reference": "7f9bbb1734b380b7fb5aae58dced0ff79c0a3afc",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "mfurman\\pdomodel\\": [
+                        "/"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michał Furman",
+                    "email": "brudka@gmail.com"
+                }
+            ],
+            "description": "It is a library of PDO model representations",
+            "keywords": [
+                "model",
+                "mysql",
+                "pdo",
+                "php",
+                "sql"
+            ],
+            "support": {
+                "issues": "https://github.com/MichalFurman/PDOModel/issues",
+                "source": "https://github.com/MichalFurman/PDOModel/tree/main"
+            },
+            "time": "2021-07-15T13:05:12+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "mfurman/pdomodel": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
