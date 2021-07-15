@@ -34,6 +34,9 @@ App client is at address:
 http://localhost:3000 -or other port on which node (NPM) started the service  
 
 
+### You can change the server host address and port configuration in the Client app.
+- The settings are in the "client/src/Utils/Config.js" file under the "API" const.
+
 ### Standalone Live working demo:
 
 Just download this package:
