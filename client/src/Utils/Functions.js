@@ -1,42 +1,45 @@
 import axios from 'axios';
-import {API} from "./config";
+import {API} from "./Config";
 
-export const itemsList = () => {
-  return axios.get(API+'/', {
+const errorMsg = 'We have some troubles. Perhaps server is down.';
+
+const requestGet = (url) => { 
+  return axios.get(API+url, {
+    headers: {'Content-Type': 'application/json'}
+  })
+  .then(response => {
+    if (response.status === 200 && response.data !== undefined) {
+      return response.data;
+    }
+    return null;
+  })
+  .catch((errors) => {
+    if (errors) console.log(errors);
+    alert(errorMsg);
+    return null;
+  });
+}
+
+const requestPost = (url, data) => {
+  return axios.post(API+url, data, {
       headers: {'Content-Type': 'application/json'}
     })
     .then(response => {
-      if (response.status === 200 && response.data !== undefined && response.data.length > 0) {
+      if (response.status === 201) {
         return response.data;
       }
       return null;
     })
     .catch((errors) => {
       if (errors) console.log(errors);
-      alert('We have some troubles. Perhaps server is down.');
+      alert(errorMsg);
       return null;
     });
 }
 
-export const getItem = (id) => {
-  return axios.get(API+'/'+id, {
-      headers: {'Content-Type': 'application/json'}
-    })
-    .then(response => {
-      if (response.status === 200) {
-        return response.data;
-      }
-      return null;
-    })
-    .catch((errors) => {
-      if (errors) console.log(errors);
-      alert('We have some troubles. Perhaps server is down.');
-      return null;
-    });
-}
 
-export const deleteItem = (id) => {
-  return axios.delete(API+'/'+id, {
+const requestDelete = (url) => {
+  return axios.delete(API+url, {
       headers: {'Content-Type': 'application/json'}
     })
     .then(response => {
@@ -47,7 +50,13 @@ export const deleteItem = (id) => {
     })
     .catch((errors) => {
       if (errors) console.log(errors);
-      alert('We have some troubles. Perhaps server is down.');
+      alert(errorMsg);
       return null;
     });
 }
+
+export const getList = () => requestGet('/');
+export const getItem = (id) => requestGet('/'+id);
+export const storeItem = (data) => requestPost('/', data);
+export const updateItem = (id, data) => requestPost('/'+id, data);
+export const deleteItem = (id) => requestDelete('/'+id);

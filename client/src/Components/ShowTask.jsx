@@ -15,7 +15,7 @@ class ShowTask extends Component {
   componentWillReceiveProps(nextProps) {
     this.setState({
       item: null
-    });
+    });  
     if (nextProps.id){
       getItem(nextProps.id).then(item => {
         this.setState({

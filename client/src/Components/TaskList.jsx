@@ -1,8 +1,6 @@
 import React, {Component, Fragment} from 'react';
-import axios from 'axios';
-import ShowTask from './ShowTask';
-import { itemsList } from '../Utils/Functions';
-import {API} from "../Utils/config";
+import ShowTask from './ShowTask'
+import { getList, storeItem } from '../Utils/Functions'
 
 
 class TaskList extends Component {
@@ -27,7 +25,7 @@ class TaskList extends Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount(){
     this.getItems();
   }
 
@@ -69,17 +67,17 @@ class TaskList extends Component {
       itemList: [],
       itemListStatus: this.messages.loading_list
     });
-    itemsList().then(data =>{
+    getList().then(data =>{
       if (Array.isArray(data) && data.length > 0)        
-      this.setState({
-        itemList: [...data],
-        itemListStatus: ''
-      });
+        this.setState({
+          itemList: [...data],
+          itemListStatus: ''
+        });
       else 
-      this.setState({
-        itemList: [],
-        itemListStatus: this.messages.no_items
-      });
+        this.setState({
+          itemList: [],
+          itemListStatus: this.messages.no_items
+        });
     });
   }
 
@@ -88,21 +86,15 @@ class TaskList extends Component {
   }
 
   submit() {
-    let url = API+"/";
-    axios.post(url, this.state.newItem, { 
-      headers: {'Content-Type': 'application/json'}
-    })
-    .then(response => {
-      if (response.status === 201) {
+    storeItem(this.state.newItem)
+    .then(data => {
+      if (data !== null) {
         this.setState({
-          itemList:[response.data, ...this.state.itemList],
+          itemList:[data, ...this.state.itemList],
           itemListStatus: ''
-        })
-      }})
-    .catch((errors) => {
-      if (errors) console.log(errors);
-      alert('Submit data failed. Perhaps server is down.');
-      this.getItems();
+        });
+      }
+      else alert('Submit data failed. Perhaps server is down.');
     });
     this.setState({
       newItem: {
