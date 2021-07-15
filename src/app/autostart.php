@@ -9,7 +9,7 @@
     */
     
     $global_conf = parse_ini_file('../../env.conf');
-    use Myvendor\Actaskman\Models\PDOAccess;
+    use \mfurman\pdomodel\PDOAccess;
 
     $dbConnect = PDOAccess::get($global_conf);
 ?>
