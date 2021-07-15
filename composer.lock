@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6cbe4ed6a90628fa1559c7daf88979d4",
+    "content-hash": "7d690f7724ca89211dc41b06b55f3c4e",
     "packages": [
         {
             "name": "bramus/router",
@@ -59,7 +59,7 @@
         },
         {
             "name": "mfurman/pdomodel",
-            "version": "dev-main",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MichalFurman/PDOModel.git",
@@ -71,7 +71,6 @@
                 "reference": "7f9bbb1734b380b7fb5aae58dced0ff79c0a3afc",
                 "shasum": ""
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -100,7 +99,7 @@
             ],
             "support": {
                 "issues": "https://github.com/MichalFurman/PDOModel/issues",
-                "source": "https://github.com/MichalFurman/PDOModel/tree/main"
+                "source": "https://github.com/MichalFurman/PDOModel/tree/1.0.0"
             },
             "time": "2021-07-15T13:05:12+00:00"
         }
@@ -108,9 +107,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "mfurman/pdomodel": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
