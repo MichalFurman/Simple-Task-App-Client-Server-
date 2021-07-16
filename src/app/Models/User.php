@@ -8,11 +8,9 @@
     {
     
         private $users_table = 'users';
-        private $commit;
 
         public function __construct($commit=true) 
         {         
-            $this->commit = $commit;  
             parent::__construct(PDOAccess::get(), $commit, false);
         }
     
