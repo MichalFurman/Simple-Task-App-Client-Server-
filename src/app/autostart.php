@@ -9,7 +9,5 @@
     */
     
     $global_conf = parse_ini_file('../../env.conf');
-    use \mfurman\pdomodel\PDOAccess;
-
-    $dbConnect = PDOAccess::get($global_conf);
+    \mfurman\pdomodel\PDOAccess::get($global_conf);
 ?>
