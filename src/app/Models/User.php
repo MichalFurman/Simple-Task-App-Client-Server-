@@ -11,43 +11,43 @@
 
         public function __construct($commit=true) 
         {         
-            parent::__construct(PDOAccess::get(), $commit, false);
+            parent::__construct(PDOAccess::get(), $this->users_table, $commit, false);
         }
     
         public function getAll() :array
         {
-            return $this->read($this->users_table,'*')->get();
+            return $this->read('*')->get();
         }
   
         public function getById(int $id) :array
         {
-            return $this->read($this->users_table,'*','id = '.$id)->get();
+            return $this->read('*','id = '.$id)->get();
         }
 
         public function getByName(string $name) 
         {
-            return $this->read($this->users_table,'*','user_name = "'.$name.'"')->get();
+            return $this->read('*','user_name = "'.$name.'"')->get();
         }
 
 
         public function add(array $data) :int
         {
             $this->set(array('user_name'=>$data['user_name']));        
-            return $this->insert($this->users_table);
+            return $this->insert();
         }
 
         public function updateOne(array $data, int $id) :bool
         {
-            if (empty($this->read($this->users_table,'*','id = '.$id)->get())) return false;
+            if (empty($this->read('*','id = '.$id)->get())) return false;
             $this->set(array('user_name'=>$data['user_name']));
-            $this->update($this->users_table, $id);
+            $this->update($id);
             return true;
         }
 
         public function deleteById(int $id) :bool
         {
-            if (empty($this->read($this->users_table,'*','id = '.$id)->get())) return false;
-            $this->delete_where($this->users_table, 'id = '.$id);
+            if (empty($this->read('*','id = '.$id)->get())) return false;
+            $this->delete_where('id = '.$id);
             return true;
         }
 
