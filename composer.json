@@ -16,6 +16,6 @@
     ],
     "require": {
         "bramus/router": "^1.5",
-        "mfurman/pdomodel": "1.0.0"
+        "mfurman/pdomodel": "1.0.2"
     }
 }
